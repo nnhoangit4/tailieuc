@@ -1,24 +1,26 @@
 #include<stdio.h>
 #include<conio.h>
-#include<stdlib.h>
+#include<malloc.h>
 void nhapmang(int *h,int n){
 	for (int i=1;i<=n;i++){
-		printf(" nhap phan tu thu h[%d] = ",h+i);
-		scanf("%d",&h[i]);
+		printf(" nhap phan tu thu h[%d] = ",i);
+		scanf("%d",h+i);
 	}
 }
 void xuatmang(int *h,int n){
 	printf(" mang vua nhap ");
 	for (int i=1;i<=n;i++){
-		printf("\n h[%d] = %d",i,h[i]);
+		printf("\n h[%d] = %d",i,*(h+i));
 		
 	}
 }
 int main (){
 	int n;
-	int *h;
+	
 	printf(" nhap n ");
 	scanf("%d",&n);
-	nhapmang(h,n);
-	xuatmang(h,n);
+	
+	int *p = (int *)malloc (n*sizeof(int));
+	nhapmang(p,n);
+	xuatmang(p,n);
 }
